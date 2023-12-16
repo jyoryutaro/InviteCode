@@ -25,4 +25,4 @@ jobs:
         cp /usr/lib/chromium-browser/chromedriver /usr/bin
 
     - name: Run script
-      run: python path/to/your_script.py
+      run: python invitecode.py
