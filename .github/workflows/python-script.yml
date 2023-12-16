@@ -22,7 +22,6 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y chromium-chromedriver
         pip install selenium
-        cp /usr/lib/chromium-browser/chromedriver /usr/bin
 
     - name: Run script
       run: python invitecode.py
