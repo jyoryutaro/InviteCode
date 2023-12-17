@@ -2,7 +2,7 @@ name: Run Python Script
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   run-script:
@@ -17,10 +17,17 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Install dependencies
+    - name: Install Chrome and Chromedriver
       run: |
         sudo apt-get update
-        sudo apt-get install -y google-chrome-stable chromium-chromedriver
+        sudo apt-get install -y google-chrome-stable
+        sudo apt-get install -yqq unzip
+        wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
+        sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+
+
+    - name: Install dependencies
+      run: |
         pip install selenium
 
     - name: Run scriptå
