@@ -8,11 +8,19 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-chrome_options = Options()
-chrome_options.binary_location = "/usr/bin/google-chrome"
-chrome_service = Service("/usr/bin/chromedriver")
 
-driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
+driver = webdriver.Chrome(options=chrome_options)
+
+#chrome_options = Options()
+#chrome_options.binary_location = "/usr/bin/google-chrome"
+#chrome_service = Service("/usr/bin/chromedriver")
+
+#driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 driver.get('https://altema.jp/dotyusya/syoutaicode#commentstart')
 
