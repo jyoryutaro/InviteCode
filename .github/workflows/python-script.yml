@@ -18,10 +18,10 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y chromium-chromedriver
-        pip install selenium
+    run: |
+      sudo apt-get update
+      sudo apt-get install -y google-chrome-stable chromium-chromedriver
+      pip install selenium
 
     - name: Run script
       run: python invitecode.py
