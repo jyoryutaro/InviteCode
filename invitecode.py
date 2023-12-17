@@ -3,17 +3,16 @@ sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver')
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 chrome_options = Options()
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.binary_location = "/usr/bin/google-chrome"
+chrome_service = Service("/usr/bin/chromedriver")
 
-# Webドライバーの設定
-driver = webdriver.Chrome(options=chrome_options)
+driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 driver.get('https://altema.jp/dotyusya/syoutaicode#commentstart')
 
