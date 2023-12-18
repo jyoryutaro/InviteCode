@@ -29,13 +29,33 @@ element_to_click = WebDriverWait(driver, 10).until(
 )
 element_to_click.click()
 
-input_field = driver.find_element(By.NAME, 'comment_content_add1')
+# テキストフィールドに入力
+input_field = WebDriverWait(driver, 10).until(
+    EC.element_to_be_clickable((By.NAME, 'comment_content_add1'))
+)
 input_field.send_keys('2d79884b6845')
 
-submit_button = driver.find_element(By.NAME, 'comment_submit')
-#submit_button.click()
+print(input_field.get_attribute('value'))
+
+# 送信ボタンをクリック
+submit_button = WebDriverWait(driver, 10).until(
+    EC.element_to_be_clickable((By.NAME, 'comment_submit'))
+)
 driver.execute_script("arguments[0].click();", submit_button)
 
+
+from selenium.webdriver.common.alert import Alert
+
+WebDriverWait(driver, 10).until(EC.alert_is_present())
+
+# ポップアップにアクセスし、エンターキーを押す
+alert = Alert(driver)
+alert.accept()  # エンターキーを押すのと同じ（OKをクリック）
+
+
+import time
+
+time.sleep(60)
 # ブラウザを閉じる
 driver.close()
 
