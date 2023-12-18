@@ -28,9 +28,5 @@ jobs:
         pip install chromedriver-binary==94.*
         pip install selenium
 
-    - name: Install dependencies
-      run: |
-        pip install selenium
-
     - name: Run script
       run: python invitecode.py
