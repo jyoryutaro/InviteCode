@@ -55,7 +55,7 @@ alert.accept()  # エンターキーを押すのと同じ（OKをクリック）
 
 import time
 
-time.sleep(60)
+time.sleep(10)
 # ブラウザを閉じる
 driver.close()
 
